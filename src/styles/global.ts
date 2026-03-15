@@ -25,6 +25,12 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
+  html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+    position: relative;
+  }
+
   html {
     scroll-behavior: smooth;
     font-size: 16px;
@@ -35,7 +41,14 @@ export const GlobalStyle = createGlobalStyle`
     background: var(--bg);
     color: var(--text);
     line-height: 1.6;
+    width: 100%;
     overflow-x: hidden;
+  }
+
+  #root {
+    width: 100%;
+    overflow-x: hidden;
+    position: relative;
   }
 
   h1, h2, h3, h4 {
@@ -43,32 +56,43 @@ export const GlobalStyle = createGlobalStyle`
     font-weight: 700;
     color: var(--text);
     letter-spacing: -0.02em;
+    word-wrap: break-word;
   }
 
   p {
     font-size: 1rem;
     color: var(--text-light);
     line-height: 1.8;
+    word-wrap: break-word;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
   }
 
   .container {
+    width: 100%;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
   }
 
   .section-title {
-    font-size: 2.8rem;
+    font-size: clamp(2rem, 5vw, 2.8rem);
     text-align: center;
     margin-bottom: 3rem;
     position: relative;
     color: var(--text);
     font-family: 'Playfair Display', serif;
+    padding: 0 15px;
+    width: 100%;
     
     &::after {
       content: '✦';
       display: block;
-      font-size: 2.2rem;
+      font-size: clamp(1.5rem, 4vw, 2.2rem);
       color: var(--primary);
       margin: 0.5rem auto 0;
       line-height: 1;
@@ -98,8 +122,28 @@ export const GlobalStyle = createGlobalStyle`
       font-size: 14px;
     }
     
+    .container {
+      padding: 0 15px;
+    }
+    
     .section-title {
-      font-size: 2.2rem;
+      font-size: 2rem;
+      padding: 0 10px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    html {
+      font-size: 12px;
+    }
+    
+    .container {
+      padding: 0 12px;
+    }
+    
+    .section-title {
+      font-size: 1.8rem;
+      margin-bottom: 2rem;
     }
   }
 `;
