@@ -49,6 +49,7 @@ export const GlobalStyle = createGlobalStyle`
     width: 100%;
     overflow-x: hidden;
     position: relative;
+    min-height: 100vh;
   }
 
   h1, h2, h3, h4 {
@@ -77,6 +78,8 @@ export const GlobalStyle = createGlobalStyle`
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    position: relative;
+    z-index: 2;
   }
 
   .section-title {
