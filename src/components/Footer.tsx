@@ -148,7 +148,7 @@ const Footer: React.FC<FooterProps> = ({ scrollToSection, logo }) => {
         <FooterCopyright>
           <p>© {currentYear} Adriana Bolos - Todos os direitos reservados.</p>
           <p>
-            Desenvolvido por <a href="https://portifoliogeovani.netlify.app/" target="_blank" rel="noopener noreferrer">
+            Desenvolvido por <a href="https://portifolio-geovani.vercel.app/" target="_blank" rel="noopener noreferrer">
               Geovani Neumann
             </a>
           </p>

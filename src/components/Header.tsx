@@ -170,5 +170,5 @@ const Header: React.FC<HeaderProps> = ({ menuOpen, setMenuOpen, scrollToSection,
     </Navbar>
   );
 };
-
+  
 export default Header;
