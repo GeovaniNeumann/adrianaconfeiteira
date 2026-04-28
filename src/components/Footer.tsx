@@ -89,13 +89,13 @@ const FooterCopyright = styled.div`
   border-top: 1px dashed var(--primary-light);
 
   a {
-    color: var(--primary);
+    color: var(--text);
     text-decoration: none;
     font-weight: 600;
     transition: color 0.3s ease;
 
     &:hover {
-      color: var(--primary-dark);
+      color: var(--text);
     }
   }
 
@@ -104,7 +104,7 @@ const FooterCopyright = styled.div`
   }
 
   .heart {
-    color: var(--primary);
+    color: var(--text);
     display: inline-block;
     animation: pulse 1.5s ease infinite;
   }

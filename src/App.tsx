@@ -10,7 +10,7 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import WhatsAppFloat from './components/WhatsAppFloat';
 
-const brandImage = "https://i.ibb.co/Fqbktq4m/Sem-nome-Post-para-Instagram-45-2-removebg-preview.png  ";
+const brandImage = "https://i.ibb.co/9Cy7vfY/Sem-nome-200-x-200-px-3.png";
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -41,7 +41,9 @@ function App() {
         logo={brandImage}
       />
       
-      <Hero scrollToSection={scrollToSection} brandImage={brandImage} />
+      {/* ✅ REMOVA o brandImage daqui - Hero usa só a URL interna */}
+      <Hero scrollToSection={scrollToSection} />
+      
       <About />
       <Services />
       <Gallery openModal={openModal} />

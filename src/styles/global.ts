@@ -10,7 +10,7 @@ export const GlobalStyle = createGlobalStyle`
     --bg: #ffffff;
     --bg-card: #ffffff;
     --text: #4a4a4a;
-    --text-light: #302a2a;
+    --text-light: #5a5a5a;
     --gradient: linear-gradient(135deg, #ff6b8b 0%, #ffb6c1 100%);
     --gradient-reverse: linear-gradient(135deg, #ffb6c1 0%, #ff6b8b 100%);
     --gradient-strong: linear-gradient(135deg, #ff4d6d 0%, #ff6b8b 100%);
@@ -33,7 +33,7 @@ export const GlobalStyle = createGlobalStyle`
 
   html {
     scroll-behavior: smooth;
-    font-size: 16px;
+    font-size: 18px; /* Aumentado de 16px para 18px */
   }
 
   body {
@@ -43,6 +43,7 @@ export const GlobalStyle = createGlobalStyle`
     line-height: 1.6;
     width: 100%;
     overflow-x: hidden;
+    font-size: 1.1rem; /* Texto base maior */
   }
 
   #root {
@@ -60,8 +61,24 @@ export const GlobalStyle = createGlobalStyle`
     word-wrap: break-word;
   }
 
+  h1 {
+    font-size: 2.7rem; /* Aumentado */
+  }
+
+  h2 {
+    font-size: 2.2rem; /* Aumentado */
+  }
+
+  h3 {
+    font-size: 2rem; /* Aumentado */
+  }
+
+  h4 {
+    font-size: 1.5rem; /* Aumentado */
+  }
+
   p {
-    font-size: 1rem;
+    font-size: 1.1rem; /* Aumentado de 1rem */
     color: var(--text-light);
     line-height: 1.8;
     word-wrap: break-word;
@@ -83,7 +100,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   .section-title {
-    font-size: clamp(2rem, 5vw, 2.8rem);
+    font-size: clamp(2.5rem, 5vw, 2.2rem); /* Aumentado */
     text-align: center;
     margin-bottom: 3rem;
     position: relative;
@@ -95,9 +112,9 @@ export const GlobalStyle = createGlobalStyle`
     &::after {
       content: '✦';
       display: block;
-      font-size: clamp(1.5rem, 4vw, 2.2rem);
+      font-size: clamp(2rem, 4vw, 2.5rem); /* Aumentado */
       color: var(--primary);
-      margin: 0.5rem auto 0;
+      margin: 0.8rem auto 0;
       line-height: 1;
       opacity: 0.8;
     }
@@ -120,33 +137,101 @@ export const GlobalStyle = createGlobalStyle`
     background: var(--primary-dark);
   }
 
-  @media (max-width: 768px) {
+  /* TABLET (768px - 1024px) */
+  @media (max-width: 1024px) {
     html {
-      font-size: 14px;
+      font-size: 17px;
+    }
+    
+    body {
+      font-size: 1rem;
+    }
+    
+    h1 {
+      font-size: 3rem;
+    }
+    
+    h2 {
+      font-size: 2.4rem;
+    }
+    
+    h3 {
+      font-size: 1.8rem;
     }
     
     .container {
-      padding: 0 15px;
-    }
-    
-    .section-title {
-      font-size: 2rem;
-      padding: 0 10px;
+      padding: 0 25px;
     }
   }
 
-  @media (max-width: 480px) {
+  /* MOBILE GRANDE (481px - 768px) */
+  @media (max-width: 768px) {
     html {
-      font-size: 12px;
+      font-size: 16px;
+    }
+    
+    body {
+      font-size: 1rem;
+    }
+    
+    h1 {
+      font-size: 2.5rem;
+    }
+    
+    h2 {
+      font-size: 2rem;
+    }
+    
+    h3 {
+      font-size: 1.6rem;
+    }
+    
+    h4 {
+      font-size: 1.3rem;
+    }
+    
+    p {
+      font-size: 1rem;
     }
     
     .container {
-      padding: 0 12px;
+      padding: 0 20px;
+    }
+    
+    .section-title {
+      font-size: 2.2rem;
+      margin-bottom: 2.5rem;
+      
+      &::after {
+        font-size: 1.8rem;
+      }
+    }
+  }
+
+  /* MOBILE PEQUENO (até 480px) */
+  @media (max-width: 480px) {
+    html {
+      font-size: 15px;
+    }
+    
+    h1 {
+      font-size: 2.2rem;
+    }
+    
+    h2 {
+      font-size: 1.8rem;
+    }
+    
+    h3 {
+      font-size: 1.4rem;
     }
     
     .section-title {
       font-size: 1.8rem;
-      margin-bottom: 2rem;
+      
+      &::after {
+        font-size: 1.5rem;
+      }
     }
   }
 `;
