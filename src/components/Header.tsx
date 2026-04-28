@@ -17,9 +17,8 @@ const Navbar = styled(motion.nav)<{ $scrolled: boolean }>`
   padding: ${props => props.$scrolled ? '10px 0' : '20px 0'};
   z-index: 1000;
   transition: all 0.3s ease;
-  background: ${props => props.$scrolled ? 'rgba(255, 255, 255, 0.98)' : 'rgba(255, 255, 255, 0.95)'};
-  backdrop-filter: blur(15px);
-  box-shadow: ${props => props.$scrolled ? '0 4px 30px rgba(255, 107, 139, 0.15)' : '0 2px 20px rgba(255, 107, 139, 0.08)'};
+  background: ${props => props.$scrolled ? '#ffffff' : 'transparent'};
+  box-shadow: ${props => props.$scrolled ? '0 4px 20px rgba(0, 0, 0, 0.08)' : 'none'};
 `;
 
 const NavbarContainer = styled.div`
@@ -31,13 +30,14 @@ const NavbarContainer = styled.div`
   align-items: center;
 `;
 
-const Logo = styled(motion.img)`
+const Logo = styled(motion.img)<{ $scrolled: boolean }>`
   height: 50px;
   width: auto;
   border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(255, 107, 139, 0.2);
   cursor: pointer;
   object-fit: contain;
+  filter: ${props => props.$scrolled ? 'none' : 'drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2))'};
+  transition: filter 0.3s ease;
 `;
 
 const NavMenu = styled(motion.ul)`
@@ -50,9 +50,9 @@ const NavMenu = styled(motion.ul)`
   }
 `;
 
-const NavItem = styled.li`
+const NavItem = styled.li<{ $scrolled: boolean }>`
   a {
-    color: var(--text);
+    color: ${props => props.$scrolled ? 'var(--text)' : 'white'};
     text-decoration: none;
     font-weight: 600;
     font-size: 0.95rem;
@@ -60,6 +60,7 @@ const NavItem = styled.li`
     transition: color 0.3s ease;
     padding: 5px 0;
     letter-spacing: 0.5px;
+    text-shadow: ${props => props.$scrolled ? 'none' : '2px 2px 4px rgba(0, 0, 0, 0.3)'};
 
     &::before {
       content: '';
@@ -69,13 +70,13 @@ const NavItem = styled.li`
       transform: translateX(-50%);
       width: 0;
       height: 2px;
-      background: var(--gradient);
+      background: ${props => props.$scrolled ? 'var(--gradient)' : 'white'};
       transition: width 0.3s ease;
       border-radius: 2px;
     }
 
     &:hover {
-      color: var(--primary);
+      color: ${props => props.$scrolled ? 'var(--primary)' : '#ffb6c1'};
       
       &::before {
         width: 80%;
@@ -84,14 +85,13 @@ const NavItem = styled.li`
   }
 `;
 
-const MenuToggle = styled(motion.div)`
+const MenuToggle = styled(motion.div)<{ $scrolled: boolean }>`
   display: none;
   cursor: pointer;
   width: 45px;
   height: 45px;
   border-radius: 50%;
-  background: linear-gradient(135deg, rgba(255, 107, 139, 0.1), rgba(255, 182, 193, 0.1));
-  backdrop-filter: blur(5px);
+  background: ${props => props.$scrolled ? 'rgba(255, 107, 139, 0.1)' : 'transparent'};
   align-items: center;
   justify-content: center;
   z-index: 1001;
@@ -102,8 +102,9 @@ const MenuToggle = styled(motion.div)`
 
   i {
     font-size: 1.6rem;
-    color: var(--primary);
+    color: ${props => props.$scrolled ? 'var(--primary)' : 'white'};
     transition: all 0.3s ease;
+    text-shadow: ${props => props.$scrolled ? 'none' : '2px 2px 4px rgba(0, 0, 0, 0.3)'};
   }
 
   &:hover i {
@@ -111,15 +112,15 @@ const MenuToggle = styled(motion.div)`
   }
 `;
 
-const OrderButton = styled(motion.a)`
-  background: var(--gradient);
+const OrderButton = styled(motion.a)<{ $scrolled: boolean }>`
+  background: ${props => props.$scrolled ? 'var(--gradient)' : 'var(--gradient)'};
   color: white;
   padding: 12px 28px;
   border-radius: 40px;
   text-decoration: none;
   font-weight: 700;
   font-size: 0.9rem;
-  box-shadow: var(--shadow);
+  box-shadow: ${props => props.$scrolled ? 'var(--shadow)' : '0 4px 15px rgba(0, 0, 0, 0.2)'};
   transition: all 0.3s ease;
   border: none;
   letter-spacing: 0.5px;
@@ -133,7 +134,7 @@ const OrderButton = styled(motion.a)`
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: var(--shadow-hover);
+    box-shadow: ${props => props.$scrolled ? 'var(--shadow-hover)' : '0 6px 20px rgba(0, 0, 0, 0.25)'};
   }
 
   @media (max-width: 768px) {
@@ -286,13 +287,14 @@ const Header: React.FC<HeaderProps> = ({ menuOpen, setMenuOpen, scrollToSection,
           <Logo 
             src={logo} 
             alt="Adriana Bolos"
+            $scrolled={scrolled}
             whileHover={{ scale: 1.05 }}
             onClick={(e: any) => scrollToSection(e, 'home')}
           />
           
           <NavMenu>
             {menuItems.map((item) => (
-              <NavItem key={item.id}>
+              <NavItem key={item.id} $scrolled={scrolled}>
                 <a href={`#${item.id}`} onClick={(e) => scrollToSection(e, item.id)}>
                   {item.label}
                 </a>
@@ -304,6 +306,7 @@ const Header: React.FC<HeaderProps> = ({ menuOpen, setMenuOpen, scrollToSection,
             onClick={() => setMenuOpen(!menuOpen)}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
+            $scrolled={scrolled}
           >
             <i className={`fas fa-${menuOpen ? 'times' : 'bars'}`}></i>
           </MenuToggle>
@@ -313,6 +316,7 @@ const Header: React.FC<HeaderProps> = ({ menuOpen, setMenuOpen, scrollToSection,
             target="_blank"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            $scrolled={scrolled}
           >
             <i className="fab fa-whatsapp"></i> ENCOMENDAR
           </OrderButton>
